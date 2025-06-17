@@ -1,0 +1,56 @@
+.matrix-text {
+    color: #ffffff;
+    font-family: monospace;
+    position: relative;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+    z-index: 2;
+}
+
+.matrix-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-2px, -2px);
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 15px #ffffff;
+    animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+    0%,100% {
+        clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        transform: translate(0);
+    }
+    33% {
+        clip-path: polygon(0 0, 100% 0, 100% 15%, 0 15%);
+        transform: translate(-5px, -5px);
+    }
+    66% {
+        clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+        transform: translate(5px, 5px);
+    }
+}
+
+/* Support most browsers */
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: #17bbab #060b18;
+    scrollbar-width: thin;
+}
+
+/* Support chromium browsers */
+::-webkit-scrollbar {
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #17bbab, #ffe600);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #060b18;
+}
